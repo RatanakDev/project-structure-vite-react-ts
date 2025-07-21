@@ -15,7 +15,13 @@ import {
 } from "@/components/ui/sidebar"
 import { Outlet } from "react-router-dom"
 
+import { useLocation } from "react-router-dom";
+
 export default function Layout() {
+
+    const location = useLocation();
+
+
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -30,20 +36,23 @@ export default function Layout() {
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbLink href="#">
-                                        Building Your Application
+                                    <BreadcrumbLink>
+                                        {/* Building Your Application */}
+                                        {location.pathname === "/dashboard" ? "Dashboard" :
+                                            location.pathname === "/invoice" ? "Invoice"
+                                                : "Invalid path"}
                                     </BreadcrumbLink>
                                 </BreadcrumbItem>
-                                <BreadcrumbSeparator className="hidden md:block" />
-                                <BreadcrumbItem>
+                                {/* <BreadcrumbSeparator className="hidden md:block" /> */}
+                                {/* <BreadcrumbItem>
                                     <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                                </BreadcrumbItem>
+                                </BreadcrumbItem> */}
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
                 </header>
                 <div className="flex h-full w-full flex-col overflow-hidden">
-                    <div className="pl-[16px]">
+                    <div className="p-[16px]">
                         <Outlet />
                     </div>
 

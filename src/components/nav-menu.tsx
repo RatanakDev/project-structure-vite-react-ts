@@ -1,8 +1,7 @@
-import React from 'react'
 import {
     type LucideIcon,
 } from "lucide-react"
-import { ChevronRight } from "lucide-react"
+// import { ChevronRight } from "lucide-react"
 
 import {
     SidebarGroup,
@@ -10,14 +9,14 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarMenuSub,
-    SidebarMenuSubButton,
-    SidebarMenuSubItem,
+    // SidebarMenuSub,
+    // SidebarMenuSubButton,
+    // SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
 import {
     Collapsible,
-    CollapsibleContent,
+    // CollapsibleContent,
     CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 
@@ -43,15 +42,9 @@ export default function NavMenu({
 
     const location = useLocation();
 
-    console.log("first", location.pathname);
-
-
-
-
-
     return (
         <SidebarGroup>
-            <SidebarGroupLabel>Platform</SidebarGroupLabel>
+            <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
             <SidebarMenu>
                 {menu.map((item) => (
                     <Collapsible

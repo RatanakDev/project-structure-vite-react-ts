@@ -4,18 +4,16 @@ import {
   BookOpen,
   Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
+  LayoutDashboard,
+  Monitor
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+// import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -24,6 +22,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import NavMenu from "./nav-menu"
+import { CompanyLogo } from "./company-logo"
 
 // This is sample data.
 const data = {
@@ -49,6 +48,13 @@ const data = {
       plan: "Free",
     },
   ],
+  company:
+  {
+    name: "Company A",
+    icon: Monitor,
+    plan: "Enterprise",
+  },
+
   navMain: [
     {
       title: "Playground",
@@ -136,51 +142,35 @@ const data = {
       ],
     },
   ],
-  menus:[
+  menus: [
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: Frame,
+      icon: LayoutDashboard,
       isActive: true,
       items: [],
     },
-    {
-      title: "Invoices",
-      url: "/invoice",
-      icon: Frame,
-      // isActive: true,
-      items: [],
-    },
+    // {
+    //   title: "Invoices",
+    //   url: "/invoice",
+    //   icon: ScrollText,
+    //   // isActive: true,
+    //   items: [],
+    // },
   ],
-  projects: [
-    {
-      name: "Dashboard",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Invoices",
-      url: "/invoice",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <CompanyLogo companies={data.company} />
+        {/* <TeamSwitcher teams={data.teams} /> */}
       </SidebarHeader>
       <SidebarContent>
-        {/* <NavMain items={data.navMain} /> */}
-        {/* <NavProjects projects={data.projects} /> */}
         <NavMenu menu={data.menus} />
+        <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
