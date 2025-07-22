@@ -1,10 +1,12 @@
 import * as React from "react"
 
 import {
-  Settings2,
   LayoutDashboard,
   Monitor,
-  ReceiptText
+  ReceiptText,
+  UserRoundCog,
+  Package,
+  User
 } from "lucide-react"
 
 import {
@@ -54,12 +56,25 @@ const data = {
   ],
   navConfig: [
     {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings2,
+      title: "User Configuration",
+      url: "/user-config",
+      icon: UserRoundCog,
       items: [
-        { title: "Users", url: "/settings/users" },
-        { title: "Roles", url: "/settings/roles" },
+        { title: "Users", url: "/user-config/users", icon: User },
+        { title: "Customers", url: "/user-config/customers", icon: User },
+        { title: "Customer Type", url: "/user-config/customer-type", icon: User },
+        { title: "Sale Person", url: "/user-config/sale-person", icon: User },
+      ],
+    },
+    {
+      title: "Products Setup",
+      url: "/product",
+      icon: Package,
+      items: [
+        { title: "Products", url: "/product/products", icon: User },
+        { title: "Brands", url: "/product/brands", icon: User },
+        { title: "Sizes", url: "/product/sizes", icon: User },
+        { title: "Units", url: "/product/units", icon: User },
       ],
     },
   ],
