@@ -21,6 +21,13 @@ export default function Layout() {
 
     const location = useLocation();
 
+    const parts = location.pathname.split("/").filter(Boolean);
+
+    const capitalizedParts = parts.map(
+        str => str.charAt(0).toUpperCase() + str.slice(1)
+    );
+    const [first, second] = capitalizedParts;
+
 
     return (
         <SidebarProvider>
@@ -37,16 +44,29 @@ export default function Layout() {
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
                                     <BreadcrumbLink>
-                                        {/* Building Your Application */}
+                                        {
+                                            location.pathname === "/dashboard" ? "Dashboard" :
+                                                location.pathname === "/invoice" ? "Invoice"
+                                                    : first ? first : "Invalid path"
+                                        }
+                                    </BreadcrumbLink>
+                                    {/* <BreadcrumbLink>
                                         {location.pathname === "/dashboard" ? "Dashboard" :
                                             location.pathname === "/invoice" ? "Invoice"
                                                 : "Invalid path"}
-                                    </BreadcrumbLink>
+                                    </BreadcrumbLink> */}
                                 </BreadcrumbItem>
-                                {/* <BreadcrumbSeparator className="hidden md:block" /> */}
-                                {/* <BreadcrumbItem>
-                                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                                </BreadcrumbItem> */}
+                                {
+                                    parts.length > 1 && (
+                                        <>
+                                            <BreadcrumbSeparator className="hidden md:block" />
+                                            <BreadcrumbItem>
+                                                <BreadcrumbPage>{second}</BreadcrumbPage>
+                                            </BreadcrumbItem>
+                                        </>
+                                    )
+                                }
+
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
@@ -55,7 +75,6 @@ export default function Layout() {
                     <div className="p-[16px]">
                         <Outlet />
                     </div>
-
                 </div>
             </SidebarInset>
         </SidebarProvider>

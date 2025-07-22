@@ -25,10 +25,10 @@ import { Link } from "react-router-dom"
 import { useLocation } from "react-router-dom";
 
 
-export default function NavMenu({
-    menu,
+export default function NavAccounting({
+    accountingMenu,
 }: {
-    menu: {
+    accountingMenu: {
         title: string
         url: string
         icon?: LucideIcon
@@ -44,9 +44,9 @@ export default function NavMenu({
 
     return (
         <SidebarGroup>
-            <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+            <SidebarGroupLabel>Accounting</SidebarGroupLabel>
             <SidebarMenu>
-                {menu.map((item) => (
+                {accountingMenu.map((item) => (
                     <Collapsible
                         key={item.title}
                         asChild

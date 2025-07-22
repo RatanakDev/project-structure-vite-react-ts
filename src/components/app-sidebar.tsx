@@ -1,19 +1,12 @@
 import * as React from "react"
+
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  GalleryVerticalEnd,
   Settings2,
-  SquareTerminal,
   LayoutDashboard,
-  Monitor
+  Monitor,
+  ReceiptText
 } from "lucide-react"
 
-import { NavMain } from "@/components/nav-main"
-import { NavUser } from "@/components/nav-user"
-// import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -21,8 +14,12 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import NavMenu from "./nav-menu"
+
+import { NavUser } from "@/components/nav-user"
 import { CompanyLogo } from "./company-logo"
+import NavDashboard from "./nav-dashboard"
+import NavAccounting from "./nav-acc"
+import { NavConfiguration } from "./nav-configuration"
 
 // This is sample data.
 const data = {
@@ -31,118 +28,13 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   company:
   {
     name: "Company A",
     icon: Monitor,
     plan: "Enterprise",
   },
-
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  menus: [
+  dashboardMenu: [
     {
       title: "Dashboard",
       url: "/dashboard",
@@ -150,14 +42,28 @@ const data = {
       isActive: true,
       items: [],
     },
-    // {
-    //   title: "Invoices",
-    //   url: "/invoice",
-    //   icon: ScrollText,
-    //   // isActive: true,
-    //   items: [],
-    // },
   ],
+  accountingMenu: [
+    {
+      title: "Invoice",
+      url: "/invoice",
+      icon: ReceiptText,
+      isActive: true,
+      items: [],
+    },
+  ],
+  navConfig: [
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: Settings2,
+      items: [
+        { title: "Users", url: "/settings/users" },
+        { title: "Roles", url: "/settings/roles" },
+      ],
+    },
+  ],
+
 
 }
 
@@ -166,11 +72,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <CompanyLogo companies={data.company} />
-        {/* <TeamSwitcher teams={data.teams} /> */}
       </SidebarHeader>
       <SidebarContent>
-        <NavMenu menu={data.menus} />
-        <NavMain items={data.navMain} />
+        <NavDashboard dashboardMenu={data.dashboardMenu} />
+        <NavAccounting accountingMenu={data.accountingMenu} />
+        <NavConfiguration items={data.navConfig} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

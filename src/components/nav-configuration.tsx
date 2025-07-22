@@ -18,32 +18,24 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
+type NavConfigItem = {
+  title: string;
+  url: string;
+  icon?: LucideIcon;
+  items?: NavConfigItem[];
+};
 
-export function NavMain({
-  items,
-}: {
-  items: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
-    items?: {
-      title: string
-      url: string
-    }[]
-  }[]
-}) {
+export function NavConfiguration({ items }: { items: NavConfigItem[] }) {
 
-  
+
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Configuration</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
             key={item.title}
             asChild
-            defaultOpen={item.isActive}
             className="group/collapsible"
           >
             <SidebarMenuItem>
@@ -72,5 +64,8 @@ export function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
+
+
+
   )
 }
