@@ -9,7 +9,6 @@ A modern starter template using **Vite**, **React**, **TypeScript**, and **Tailw
   &nbsp;&nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png" alt="TypeScript" width="80" />
   &nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/master/.github/logo.svg" alt="Tailwind CSS" width="80" />
 </p>
 
 ---
